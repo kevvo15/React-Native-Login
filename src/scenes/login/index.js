@@ -1,11 +1,42 @@
-import * as React from 'react';
-import {Button, View, Text} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Text, Button} from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 export default function LoginScreen({navigation}) {
+  // Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if (initializing) return null;
+
+  if (!user) {
+    return (
+      <View>
+        <Text>Login</Text>
+        <Button
+          title="Go to Home"
+          onPress={() => {
+            navigation.navigate('Home');
+          }}
+        />
+      </View>
+    );
+  }
+
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Login Screen</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+    <View>
+      <Text>Welcome {user.email}</Text>
     </View>
   );
 }

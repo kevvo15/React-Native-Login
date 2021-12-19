@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "316773257284",
+    "project_id": "kevvo-lise-tuff",
+    "storage_bucket": "kevvo-lise-tuff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316773257284:android:4044eff7bbbb0f9db02c11",
+        "android_client_info": {
+          "package_name": "kevvo.TUFF"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "316773257284-h7dol8on7ghcuo0sbd62fpkt5dhfj3gu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0GFW5xMv7I6tOXnsShktQ6Lv4h33KCjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316773257284-h7dol8on7ghcuo0sbd62fpkt5dhfj3gu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

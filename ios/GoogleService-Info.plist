@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>316773257284-2fa5cdcdqbn9j8pmvs6fni1k4e7i6trh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.316773257284-2fa5cdcdqbn9j8pmvs6fni1k4e7i6trh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDw9pJdBD0TGp6fH_EypN_1u1aPXK9svV4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>316773257284</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kevvo.TUFF</string>
+	<key>PROJECT_ID</key>
+	<string>kevvo-lise-tuff</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kevvo-lise-tuff.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:316773257284:ios:8864df95b4a72559b02c11</string>
+</dict>
+</plist>
