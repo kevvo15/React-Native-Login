@@ -1,7 +1,7 @@
 {
     "plugins": [
       [
-        "module-resolver",
+        "babel-plugin-module-resolver",
         {
           "cwd": "babelrc",
           "root": ["./src"],
@@ -13,6 +13,8 @@
             "_molecules": "./src/components/molecules",
             "_organisms": "./src/components/organisms",
             "_navigations": "./src/navigations",
+            "_home": "./src/scenes/home",
+            "_login": "./src/scenes/login",
             "_scenes": "./src/scenes",
             "_services": "./src/services",
             "_styles": "./src/styles",

@@ -1,6 +1,7 @@
 package com.tuff;
 
 import com.facebook.react.ReactActivity;
+import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
 
@@ -11,5 +12,14 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "TUFF";
+  }
+
+  /**
+   * The `react-native-screens` package requires the following configuration in order to work
+   * properly and navigate across screens.
+   */
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
   }
 }
