@@ -16,7 +16,7 @@ export default function RegisterScreen({navigation}) {
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        console.log('User account successfully created.');
+        console.log('New User Account successfully created.');
         setLoading(false);
         navigation.replace('Home');
       })

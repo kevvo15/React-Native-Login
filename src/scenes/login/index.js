@@ -11,16 +11,18 @@ export default function LoginScreen({navigation}) {
   const [loading, setLoading] = useState(false);
 
   // Handle user state changes
-  function onAuthStateChanged(user) {
+  function setState(user) {
     setUser(user);
     if (user) {
       setLoading(false);
       navigation.replace('Home');
+      console.log('User signed in successfully!');
     }
+    return user;
   }
 
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    const subscriber = auth().onAuthStateChanged(setState);
     return subscriber; // unsubscribe on unmount
   }, []);
 

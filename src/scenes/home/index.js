@@ -3,6 +3,8 @@ import {Button, Text, SafeAreaView} from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 export default function HomeScreen({navigation}) {
+  const currentUser = auth().currentUser;
+
   // Signs the user out
   const signOut = () => {
     auth()
@@ -16,7 +18,7 @@ export default function HomeScreen({navigation}) {
   return (
     <SafeAreaView
       style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
+      <Text>Sign Out of {currentUser.email}'s Account</Text>
       <Button title="Sign Out" onPress={signOut} />
     </SafeAreaView>
   );
