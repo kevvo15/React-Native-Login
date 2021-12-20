@@ -1,15 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {
-  ActivityIndicator,
-  Alert,
-  Button,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import {Alert, Button, Text, View} from 'react-native';
 import {Formik} from 'formik';
 import auth from '@react-native-firebase/auth';
 import {Biometrics} from '_utils';
+import {Input, LoadingIndicator} from '_atoms';
 
 export default function LoginScreen({navigation}) {
   const [user, setUser] = useState(null);
@@ -29,16 +23,7 @@ export default function LoginScreen({navigation}) {
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  if (loading)
-    return (
-      <View>
-        <ActivityIndicator
-          size="large"
-          color="black"
-          style={{flex: 1, justifyContent: 'center'}}
-        />
-      </View>
-    );
+  if (loading) return <LoadingIndicator />;
 
   const formLogin = (email, password) => {
     setLoading(true);
@@ -86,15 +71,14 @@ export default function LoginScreen({navigation}) {
           {formikprops => (
             <>
               <View>
-                <TextInput
-                  // style={globalStyles.input}
-                  placeholder="Email                            "
+                <Input
+                  placeholder="Email"
+                  secureTextEntry={false}
                   onChangeText={formikprops.handleChange('email')}
                   value={formikprops.values.email}
                 />
-                <TextInput
-                  // style={globalStyles.input}
-                  placeholder="Password                         "
+                <Input
+                  placeholder="Password"
                   secureTextEntry={true}
                   onChangeText={formikprops.handleChange('password')}
                   value={formikprops.values.password}

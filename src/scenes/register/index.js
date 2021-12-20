@@ -1,29 +1,13 @@
 import React, {useState} from 'react';
-import {
-  ActivityIndicator,
-  Alert,
-  Button,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import {Alert, Button, Text, View} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {Formik} from 'formik';
+import {Input, LoadingIndicator} from '_atoms';
 
 export default function RegisterScreen({navigation}) {
   const [loading, setLoading] = useState(false);
 
-  if (loading) {
-    return (
-      <View>
-        <ActivityIndicator
-          color="black"
-          size="large"
-          style={{flex: 1, justifyContent: 'center'}}
-        />
-      </View>
-    );
-  }
+  if (loading) return <LoadingIndicator />;
 
   // Email and Password User Creation
   const createUser = (email, password) => {
@@ -83,22 +67,20 @@ export default function RegisterScreen({navigation}) {
         {formikprops => (
           <>
             <View>
-              <TextInput
-                //style={globalStyles.input}
-                placeholder="Email                            "
+              <Input
+                placeholder="Email"
+                secureTextEntry={false}
                 onChangeText={formikprops.handleChange('email')}
                 value={formikprops.values.email}
               />
-              <TextInput
-                //style={globalStyles.input}
-                placeholder="Password                         "
+              <Input
+                placeholder="Password"
                 secureTextEntry={true}
                 onChangeText={formikprops.handleChange('password')}
                 value={formikprops.values.password}
               />
-              <TextInput
-                //style={globalStyles.input}
-                placeholder="Reenter Password                 "
+              <Input
+                placeholder="Reenter Password"
                 secureTextEntry={true}
                 onChangeText={formikprops.handleChange('validate')}
                 value={formikprops.values.validate}
