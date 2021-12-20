@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {Formik} from 'formik';
 import auth from '@react-native-firebase/auth';
-import ReactNativeBiometrics from 'react-native-biometrics';
+import {Biometrics} from '_utils';
 
 export default function LoginScreen({navigation}) {
   const [user, setUser] = useState(null);
@@ -21,7 +21,6 @@ export default function LoginScreen({navigation}) {
     if (user) {
       setLoading(false);
       navigation.replace('Home');
-      console.log('User signed in successfully!');
     }
   }
 
@@ -41,33 +40,6 @@ export default function LoginScreen({navigation}) {
       </View>
     );
 
-  const biometricLogin = () => {
-    ReactNativeBiometrics.isSensorAvailable().then(
-      ({available, biometryType, error}) => {
-        if (available) {
-          switch (biometryType) {
-            case ReactNativeBiometrics.TouchID:
-            case ReactNativeBiometrics.FaceID:
-            case ReactNativeBiometrics.Biometrics:
-              ReactNativeBiometrics.simplePrompt({
-                promptMessage: 'Verify your identity',
-              }).then(({success}) => {
-                if (success) {
-                  console.log('successful biometrics provided\n');
-                  console.log('<<<DEV SIGN IN NOW>>>');
-                } else {
-                  console.log('user cancelled biometric prompt');
-                }
-              });
-              break;
-            default:
-              console.error(`Biometrics type not supported: ${biometryType}`);
-          }
-        } else console.log(error);
-      },
-    );
-  };
-
   const formLogin = (email, password) => {
     setLoading(true);
     auth()
@@ -86,6 +58,13 @@ export default function LoginScreen({navigation}) {
             break;
         }
       });
+  };
+
+  // Signs the user out
+  const signOut = () => {
+    auth()
+      .signOut()
+      .then(() => console.log('User successfully signed out.'));
   };
 
   if (!user) {
@@ -132,7 +111,7 @@ export default function LoginScreen({navigation}) {
                   title="Register Here"
                   color="black"
                   onPress={() => {
-                    //navigation.replace('Signup');
+                    navigation.replace('Register');
                     console.log('Register Button Clicked');
                   }}
                 />
@@ -147,7 +126,8 @@ export default function LoginScreen({navigation}) {
   return (
     <View>
       <Text>Welcome {user.email}</Text>
-      <Button title="Verify ID to Continue" onPress={biometricLogin} />
+      <Button title="Reverify It's You to Continue" onPress={Biometrics} />
+      <Button title="Sign Out" onPress={signOut} />
     </View>
   );
 }
