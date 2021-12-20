@@ -15,6 +15,7 @@
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "babel-plugin-module-resolver": "^4.1.0",
+    "formik": "^2.2.9",
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-biometrics": "^2.1.4",
