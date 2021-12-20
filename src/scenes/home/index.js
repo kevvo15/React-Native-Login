@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Text, View} from 'react-native';
+import {Button, Text, SafeAreaView} from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 export default function HomeScreen({navigation}) {
@@ -14,9 +14,10 @@ export default function HomeScreen({navigation}) {
   };
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <SafeAreaView
+      style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Home Screen</Text>
       <Button title="Sign Out" onPress={signOut} />
-    </View>
+    </SafeAreaView>
   );
 }

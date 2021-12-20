@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {Alert, Button, Text, View} from 'react-native';
+import {Alert, Button, SafeAreaView, Text, View} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {Formik} from 'formik';
 import {Input, LoadingIndicator} from '_atoms';
+import {Styles} from '_styles';
 
 export default function RegisterScreen({navigation}) {
   const [loading, setLoading] = useState(false);
@@ -35,9 +36,9 @@ export default function RegisterScreen({navigation}) {
   };
 
   return (
-    <View>
-      <Text>
-        Register today with a valid email address and a strong password!
+    <SafeAreaView style={Styles.container}>
+      <Text style={{textAlign: 'center', padding: 40}}>
+        Register today to start earning points!
       </Text>
       <Formik
         initialValues={{email: '', password: '', validate: ''}}
@@ -80,14 +81,14 @@ export default function RegisterScreen({navigation}) {
                 value={formikprops.values.password}
               />
               <Input
-                placeholder="Reenter Password"
+                placeholder="Reenter Password             "
                 secureTextEntry={true}
                 onChangeText={formikprops.handleChange('validate')}
                 value={formikprops.values.validate}
               />
             </View>
             <View>
-              <Text>Create Account</Text>
+              <Text style={{paddingTop: 50}}>Create Account</Text>
               <Button
                 title="Submit"
                 color="black"
@@ -97,7 +98,7 @@ export default function RegisterScreen({navigation}) {
           </>
         )}
       </Formik>
-      <View>
+      <View style={Styles.container}>
         <Text>Go Back To</Text>
         <Button
           title="Login"
@@ -107,6 +108,6 @@ export default function RegisterScreen({navigation}) {
           }}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

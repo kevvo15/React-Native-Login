@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {Alert, Button, Text, View} from 'react-native';
+import {Alert, Button, SafeAreaView, Text, View} from 'react-native';
 import {Formik} from 'formik';
 import auth from '@react-native-firebase/auth';
 import {Biometrics} from '_utils';
 import {Input, LoadingIndicator} from '_atoms';
+import {Styles} from '_styles';
 
 export default function LoginScreen({navigation}) {
   const [user, setUser] = useState(null);
@@ -54,7 +55,7 @@ export default function LoginScreen({navigation}) {
 
   if (!user) {
     return (
-      <View>
+      <SafeAreaView style={Styles.container}>
         <Formik
           initialValues={{email: '', password: ''}}
           // validationSchema={loginSchema}
@@ -70,7 +71,7 @@ export default function LoginScreen({navigation}) {
           }}>
           {formikprops => (
             <>
-              <View>
+              <View style={{paddingTop: 75}}>
                 <Input
                   placeholder="Email"
                   secureTextEntry={false}
@@ -78,7 +79,7 @@ export default function LoginScreen({navigation}) {
                   value={formikprops.values.email}
                 />
                 <Input
-                  placeholder="Password"
+                  placeholder="Password                         "
                   secureTextEntry={true}
                   onChangeText={formikprops.handleChange('password')}
                   value={formikprops.values.password}
@@ -89,7 +90,7 @@ export default function LoginScreen({navigation}) {
                   onPress={formikprops.handleSubmit}
                 />
               </View>
-              <View>
+              <View style={Styles.container}>
                 <Text>New User?</Text>
                 <Button
                   title="Register Here"
@@ -103,7 +104,7 @@ export default function LoginScreen({navigation}) {
             </>
           )}
         </Formik>
-      </View>
+      </SafeAreaView>
     );
   }
 
