@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactNativeBiometrics from 'react-native-biometrics';
 
 export default function biometricLogin() {
